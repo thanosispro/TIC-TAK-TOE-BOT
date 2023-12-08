@@ -108,7 +108,7 @@ for(i=0;i<=7;i++){
                
            
     }
-
+checkwin();
 }
 
 
@@ -168,7 +168,7 @@ function cells(that){
                 setTimeout(function(){ defend();},600);
                
             }
-            checkwin();
+            
     }
    
 
