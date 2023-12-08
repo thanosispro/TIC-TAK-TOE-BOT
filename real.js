@@ -92,7 +92,7 @@ for(i=0;i<=7;i++){
                console.log("1");
                if(i===7){
                for(j=0;j<=100;j++){
-                random=Math.floor(Math.random() * 8);
+                random=Math.floor(Math.random() * 9);
                    if(gameboard[random].innerHTML===""){
                     console.log("else");
                     console.log(j);
