@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="try.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <input placeholder="ENTER YOUR NAME" type="text" id="input" style="text-align:center;border-radius: 20px; border-color: yellow; border:3px solid;height: 30pt; width: 200pt;">
+ <p id="turn"></p>
+        <div class="main" style="backdrop-filter: blur(10px); width: 400pt;"><table border="2px">
+    <tr>
+        <td class="cell" onclick="cells(this)"></td>
+        <td class="cell" onclick="cells(this)"></td>
+        <td class="cell" onclick="cells(this)"></td>
+    </tr>
+    <tr>
+        <td class="cell" onclick="cells(this)"></td>
+        <td class="cell" onclick="cells(this)"></td>
+        <td class="cell" onclick="cells(this)"></td>
+    </tr>
+    <tr>
+        <td class="cell" onclick="cells(this)"></td>
+        <td class="cell" onclick="cells(this)"></td>
+        <td class="cell" onclick="cells(this)"></td>
+    </tr>
+        </table></div>
+    </center>
+    <center>
+        <br>
+       <div style="backdrop-filter: blur(5px); width: 300pt;"><p id="start"> <button onclick="startgame()" id="btn">START GAME</button></p>
+        <p id="checkwin"></p>
+    <p id="restart"></p></center>  </div>
+
+</body>
+<script src="real.js"></script>
+</html>
