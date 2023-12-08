@@ -53,7 +53,7 @@ document.getElementById("restart").innerHTML=`<button onclick="restartgame()" id
 document.getElementById("start").innerHTML="";
 }
 else{
-    if(gameboard[0].innerHTML!=="" && gameboard[3].innerHTML!=="" &&  gameboard[1].innerHTML!=="" &&  gameboard[2].innerHTML!=="" && gameboard[4].innerHTML!=="" && gameboard[5].innerHTML!=="" && gameboard[6].innerHTML!=="" && gameboard[7].innerHTML!=="" && gameboard[8].innerHTML!=="" ){
+    if(i===7 && gameboard[0].innerHTML!=="" && gameboard[3].innerHTML!=="" &&  gameboard[1].innerHTML!=="" &&  gameboard[2].innerHTML!=="" && gameboard[4].innerHTML!=="" && gameboard[5].innerHTML!=="" && gameboard[6].innerHTML!=="" && gameboard[7].innerHTML!=="" && gameboard[8].innerHTML!=="" ){
     document.getElementById("checkwin").innerHTML=`The Game is Draw`;
     document.getElementById("restart").innerHTML=`<button onclick="restartgame()" id="btn">Restart</button>`;
     document.getElementById("start").innerHTML="";
