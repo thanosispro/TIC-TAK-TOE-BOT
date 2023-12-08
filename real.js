@@ -90,7 +90,7 @@ for(i=0;i<=7;i++){
             else{
                
                console.log("1");
-               if(i==7){
+               if(i===7){
                for(j=0;j<=7;j++){
                 random=Math.floor(Math.random() * 8);
                    if(gameboard[random].innerHTML===""){
