@@ -48,7 +48,7 @@ if(gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][1]].innerH
     else{
         document.getElementById("checkwin").innerHTML=`the winner is Parlee Dai`;
     }
-    document.getElementById("checkwin").innerHTML=`winner=${gameboard[winboard[i][0]].innerHTML}`;
+   
 document.getElementById("restart").innerHTML=`<button onclick="restartgame()" id="btn">Restart</button>`;
 document.getElementById("start").innerHTML="";
 }
