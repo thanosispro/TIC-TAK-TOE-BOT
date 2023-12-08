@@ -9,6 +9,7 @@ let winboard=[
     [2,5,8],
 ];
 console.log(winboard[7][2]);
+var music=document.getElementById("music");
 let turn=document.getElementById("turn").innerHTML;
 let i,a,b,c,j,k,m,gameboard=[],count=1,test=0,random,st=1,lol=1,name;
 for(i=0;i<=8;i++){
@@ -132,7 +133,7 @@ function cells(that){
         alert(" click on (start game)");}
         else{
     if(that.innerHTML ===""){
-        
+         music.play();
         that.innerHTML="X";
         if(count==1){
 
