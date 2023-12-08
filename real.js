@@ -10,7 +10,7 @@ let winboard=[
 ];
 console.log(winboard[7][2]);
 let turn=document.getElementById("turn").innerHTML;
-let i,j,k,m,gameboard=[],count=1,test=0,random,st=1;
+let i,j,k,m,gameboard=[],count=1,test=0,random,st=1,lol=1;
 for(i=0;i<=8;i++){
     gameboard[i]=document.getElementsByClassName("cell")[i];
 }
@@ -24,13 +24,16 @@ document.getElementById("turn").innerHTML=`${document.getElementById("input").va
     }
 }
 function restartgame(){
+    lol++;
     count=1;
-    document.getElementById("start").innerHTML='<button onclick="startgame()" id="btn">START GAME</button>';
+    
 document.getElementById("checkwin").innerHTML="";
 document.getElementById("restart").innerHTML="";
 for(i=0;i<=8;i++){
     gameboard[i].innerHTML="";
 }
+if(lol % 2==0){
+setTimeout(function(){gameboard[0].innerHTML="O";},200); }
 }
 
 
@@ -50,7 +53,7 @@ document.getElementById("restart").innerHTML=`<button onclick="restartgame()" id
 document.getElementById("start").innerHTML="";
 }
 else{
-    if(gameboard[0].innerHTML!=="" && gameboard[3].innerHTML!=="" &&  gameboard[1].innerHTML!=="" &&  gameboard[2].innerHTML!=="" && gameboard[4].innerHTML!=="" && gameboard[5].innerHTML!=="" && gameboard[6].innerHTML!=="" && gameboard[7].innerHTML!==""){
+    if(gameboard[0].innerHTML!=="" && gameboard[3].innerHTML!=="" &&  gameboard[1].innerHTML!=="" &&  gameboard[2].innerHTML!=="" && gameboard[4].innerHTML!=="" && gameboard[5].innerHTML!=="" && gameboard[6].innerHTML!=="" && gameboard[7].innerHTML!=="" && gameboard[8].innerHTML!=="" ){
     document.getElementById("checkwin").innerHTML=`The Game is Draw`;
     document.getElementById("restart").innerHTML=`<button onclick="restartgame()" id="btn">Restart</button>`;
     document.getElementById("start").innerHTML="";
@@ -128,9 +131,13 @@ function cells(that){
         
                 }   
                     else{
+                        if(gameboard[0].innerHTML===""){
                         setTimeout(function(){
                             gameboard[0].innerHTML="O";
-                        },600);
+                        },600);}
+                        else{
+                           setTimeout(function(){defend();},600); 
+                        }
                         
                     }
             }  
