@@ -88,7 +88,7 @@ function defend(){
     test=0;
 for(i=0;i<=7;i++){
   
-            if(gameboard[winboard[i][2]].innerHTML==="" || gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][1]].innerHTML==="O"&& gameboard[winboard[i][2]].innerHTML==="" && gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][1]].innerHTML==="X"){
+            if(gameboard[winboard[i][2]].innerHTML==="" && gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][1]].innerHTML==="O" || gameboard[winboard[i][2]].innerHTML==="" && gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][1]].innerHTML==="X"){
                 console.log("if");
                 console.log(i);
                 gameboard[winboard[i][2]].innerHTML="O";
