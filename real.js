@@ -11,7 +11,7 @@ let winboard=[
 console.log(winboard[7][2]);
 var music=document.getElementById("music");
 let turn=document.getElementById("turn").innerHTML;
-let i,a,b,c,j,k,m,gameboard=[],count=1,test=0,random,st=1,lol=1,name;
+let i,iamg=0,a,b,c,j,k,m,gameboard=[],count=1,test=0,random,st=1,lol=1,name;
 for(i=0;i<=8;i++){
     gameboard[i]=document.getElementsByClassName("cell")[i];
 }
@@ -28,6 +28,7 @@ name=document.getAnimations("input").value;
 }
 }
 function restartgame(){
+    console.log("xdd"); 
     lol++;
     count=1;
     
@@ -70,7 +71,7 @@ else{
     b=gameboard[winboard[i][1]].innerHTML;
     c=gameboard[winboard[i][2]].innerHTML;
 
-    console.log(a,b,c,i);
+   
     if(i==7 && gameboard[0].innerHTML!=="" && gameboard[3].innerHTML!=="" &&  gameboard[1].innerHTML!=="" &&  gameboard[2].innerHTML!=="" && gameboard[4].innerHTML!=="" && gameboard[5].innerHTML!=="" && gameboard[6].innerHTML!=="" && gameboard[7].innerHTML!=="" && gameboard[8].innerHTML!=="" ){
        
         document.getElementById("checkwin").innerHTML=`The Game is Draw`;
@@ -83,26 +84,26 @@ else{
 
     }
 }
+
 function defend(){
     
     test=0;
 for(i=0;i<=7;i++){
   
-            if(gameboard[winboard[i][2]].innerHTML==="" && gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][1]].innerHTML==="O" || gameboard[winboard[i][2]].innerHTML==="" && gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][1]].innerHTML==="X"){
-                console.log("if");
-                console.log(i);
+            if(iamg!==1 && gameboard[winboard[i][2]].innerHTML==="" && gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][1]].innerHTML==="X"){
+                console.log("else");
                 gameboard[winboard[i][2]].innerHTML="O";
                 test=1;
                 break;
                
             }
-            else if(gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][2]].innerHTML==="O"&& gameboard[winboard[i][1]].innerHTML==="" || gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][2]].innerHTML==="X"&& gameboard[winboard[i][1]].innerHTML===""){
+            else if(iamg!==1 && gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][2]].innerHTML==="X"&& gameboard[winboard[i][1]].innerHTML===""){
                 gameboard[winboard[i][1]].innerHTML="O";
                 test=1;
                 console.log("elseif");
                 break;
             }
-            else if(gameboard[winboard[i][1]].innerHTML==="O" && gameboard[winboard[i][2]].innerHTML==="O"&& gameboard[winboard[i][0]].innerHTML==="" || gameboard[winboard[i][1]].innerHTML==="X" && gameboard[winboard[i][2]].innerHTML==="X"&& gameboard[winboard[i][0]].innerHTML===""){
+            else if(iamg!==1 && gameboard[winboard[i][1]].innerHTML==="X" && gameboard[winboard[i][2]].innerHTML==="X"&& gameboard[winboard[i][0]].innerHTML===""){
                 gameboard[winboard[i][0]].innerHTML="O";
                 test=1;
                 console.log("elseif2");
@@ -112,15 +113,14 @@ for(i=0;i<=7;i++){
             
             else{
                
-               console.log("1");
+               
                if(i===7){
                for(j=0;j<=100;j++){
+
                 random=Math.floor(Math.random() * 9);
-                console.log(random);
-                   if(gameboard[random].innerHTML===""){
-                    console.log("else");
-                    console.log(j);
-                    console.log(random);
+                
+                   if(gameboard[random].innerHTML==="" && iamg!==1 ){
+                    console.log|("else");
                     gameboard[random].innerHTML="O";
                     break;
                    }
@@ -134,10 +134,33 @@ for(i=0;i<=7;i++){
     }
     checkwin();
 }
+function win(){
+    
+    console.log("am here");
+    for(i=0;i<=7;i++){
+        if(gameboard[winboard[i][2]].innerHTML==="O" && gameboard[winboard[i][1]].innerHTML==="O" && gameboard[winboard[i][0]].innerHTML==="" ){
+        console.log("win1");
+            gameboard[winboard[i][0]].innerHTML="O";iamg=1;
+        break;    
+        }
+        else if(gameboard[winboard[i][2]].innerHTML==="O" && gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][1]].innerHTML==="" ){
+            gameboard[winboard[i][1]].innerHTML="O";console.log("win2");iamg=1;break;
+        }
+        else if(gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][1]].innerHTML==="O" && gameboard[winboard[i][2]].innerHTML==="" )
+    {
+        gameboard[winboard[i][2]].innerHTML="O";console.log("win3");iamg=1;break;
+    }
+    else{
+
+    }
+    }
+    checkwin();
+
+}   
 
 
 function cells(that){
-   
+   iamg=0;
     if(st==1){
         alert(" click on (start game)");}
         else{
@@ -145,7 +168,7 @@ function cells(that){
         music.play();
         that.innerHTML="X";
 
-        if(count==1){
+        if(count===1){
 
             count++;
             if(gameboard[4].innerHTML==="")
@@ -167,11 +190,13 @@ function cells(that){
                         
                     }
             }  
-            else if(count==2){
+            else if(count===2){
+                setTimeout(function(){win();},600);
+               
                 count=0;
                 console.log('2');
                 if(gameboard[0].innerHTML==="X" && gameboard[8].innerHTML==="X" || gameboard[2].innerHTML==="X" && gameboard[6].innerHTML==="X") {
-                   console.log("nice");
+                   
                 setTimeout(function(){gameboard[5].innerHTML="O";},600);
                     
                 }
@@ -180,19 +205,21 @@ function cells(that){
                 }
                 else{
                     count=0;
-                    console.log("1");
+                    
                     setTimeout(function(){defend();},600);
                     
                 }
             }
             
             else{
-        
-                console.log(count);
-        
-                console.log(count);
-                setTimeout(function(){ defend();},600);
+        console.log(count);
                
+                setTimeout(function(){win();},600);
+                
+if(iamg!==1){
+    console.log("real");
+                setTimeout(function(){ defend();},600);
+}   
             }
             
     }
