@@ -34,6 +34,7 @@ function restartgame(){
 document.getElementById("checkwin").innerHTML="";
 document.getElementById("restart").innerHTML="";
 for(i=0;i<=8;i++){
+    gameboard[i].style.backgroundColor="rgba(0, 0, 0, 0.0001)"
     gameboard[i].innerHTML="";
 }
 if(lol % 2==0){
@@ -48,6 +49,11 @@ function checkwin(){
     for(i=0;i<=7;i++){
         
 if(gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][1]].innerHTML==="O" && gameboard[winboard[i][2]].innerHTML==="O" || gameboard[winboard[i][0]].innerHTML==="X" &&gameboard[winboard[i][1]].innerHTML==="X" &&gameboard[winboard[i][2]].innerHTML==="X"){
+   gameboard[winboard[i][0]].style.backgroundColor="hsla(240, 100%, 50%, 0.5)";
+   gameboard[winboard[i][1]].style.backgroundColor="hsla(240, 100%, 50%, 0.5)";
+   gameboard[winboard[i][2]].style.backgroundColor="hsla(240, 100%, 50%, 0.5)";
+
+   
     if(gameboard[winboard[i][0]].innerHTML==="X"){
         document.getElementById("checkwin").innerHTML=`the winner is ${document.getElementById("input").value}`;}
     else{
@@ -58,6 +64,7 @@ document.getElementById("restart").innerHTML=`<button onclick="restartgame()" id
 document.getElementById("start").innerHTML="";
 break;
 }
+
 else{
     a=gameboard[winboard[i][0]].innerHTML;
     b=gameboard[winboard[i][1]].innerHTML;
@@ -81,7 +88,7 @@ function defend(){
     test=0;
 for(i=0;i<=7;i++){
   
-            if(gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][1]].innerHTML==="X"&& gameboard[winboard[i][2]].innerHTML===""){
+            if(gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][1]].innerHTML==="X"&& gameboard[winboard[i][2]].innerHTML==="" || gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][1]].innerHTML==="O"&& gameboard[winboard[i][2]].innerHTML===""){
                 console.log("if");
                 console.log(i);
                 gameboard[winboard[i][2]].innerHTML="O";
@@ -89,18 +96,20 @@ for(i=0;i<=7;i++){
                 break;
                
             }
-            else if(gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][2]].innerHTML==="X"&& gameboard[winboard[i][1]].innerHTML===""){
+            else if(gameboard[winboard[i][0]].innerHTML==="X" && gameboard[winboard[i][2]].innerHTML==="X"&& gameboard[winboard[i][1]].innerHTML==="" || gameboard[winboard[i][0]].innerHTML==="O" && gameboard[winboard[i][2]].innerHTML==="O"&& gameboard[winboard[i][1]].innerHTML===""){
                 gameboard[winboard[i][1]].innerHTML="O";
                 test=1;
                 console.log("elseif");
                 break;
             }
-            else if(gameboard[winboard[i][1]].innerHTML==="X" && gameboard[winboard[i][2]].innerHTML==="X"&& gameboard[winboard[i][0]].innerHTML===""){
+            else if(gameboard[winboard[i][1]].innerHTML==="X" && gameboard[winboard[i][2]].innerHTML==="X"&& gameboard[winboard[i][0]].innerHTML==="" || gameboard[winboard[i][1]].innerHTML==="O" && gameboard[winboard[i][2]].innerHTML==="O"&& gameboard[winboard[i][0]].innerHTML===""){
                 gameboard[winboard[i][0]].innerHTML="O";
                 test=1;
                 console.log("elseif2");
                 break;
             }
+            
+            
             else{
                
                console.log("1");
@@ -133,8 +142,9 @@ function cells(that){
         alert(" click on (start game)");}
         else{
     if(that.innerHTML ===""){
-         music.play();
+        music.play();
         that.innerHTML="X";
+
         if(count==1){
 
             count++;
@@ -191,6 +201,4 @@ function cells(that){
     
 }
 }
-
-
 
